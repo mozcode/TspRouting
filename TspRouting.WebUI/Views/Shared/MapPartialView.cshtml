@@ -1,0 +1,31 @@
+﻿@model string
+
+<div class="col-md-6 col-lg-6">
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+</div>
+
+<script>
+    function initMap() {
+        var center = { lat: 55.92965249, lng: 12.47840507 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: center
+        });
+
+        //$.get();
+        //$.post();
+
+        var routeCoordinates = @Model;
+
+        var route = new google.maps.Polyline({
+            path: routeCoordinates,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+        });
+
+        route.setMap(map);
+    }
+</script>
